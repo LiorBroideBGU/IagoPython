@@ -1,0 +1,37 @@
+{
+  "name": "resource_exchange",
+  "description": "Classic multi-issue bargaining: divide resources between two parties with opposing preferences.",
+  "items": [
+    {
+      "name": "apples",
+      "display_name": "Apples",
+      "singular_name": "apple",
+      "quantity": 4
+    },
+    {
+      "name": "oranges",
+      "display_name": "Oranges",
+      "singular_name": "orange",
+      "quantity": 3
+    },
+    {
+      "name": "bananas",
+      "display_name": "Bananas",
+      "singular_name": "banana",
+      "quantity": 2
+    }
+  ],
+  "agent_values": {
+    "apples": 10,
+    "oranges": 6,
+    "bananas": 2
+  },
+  "human_values": {
+    "apples": 2,
+    "oranges": 6,
+    "bananas": 10
+  },
+  "deadline_seconds": 300,
+  "allow_partial": true
+}
+

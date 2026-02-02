@@ -1,0 +1,24 @@
+{
+  "agent_type": "negochat",
+  "name": "NegoChatBot",
+  "avatar": "default",
+  "strategy": "balanced",
+  "personality": {
+    "aggressiveness": 0.5,
+    "emotional_mirroring": true,
+    "initial_greeting": "Hello! I'm looking forward to finding a deal that works for both of us."
+  },
+  "behavior": {
+    "min_acceptable_utility": 0.4,
+    "concession_rate": 0.1,
+    "response_delay_ms": 1000,
+    "idle_prompt_seconds": 30.0
+  },
+  "expressions": {
+    "on_unfair_offer": "sad",
+    "on_good_offer": "happy",
+    "on_accept": "happy",
+    "on_greeting": "happy"
+  }
+}
+

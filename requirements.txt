@@ -1,0 +1,23 @@
+# IAGO Negotiation Platform - Python Requirements
+# Core dependencies (Python 3.10+ required)
+
+# No external dependencies required for core functionality!
+# The platform uses only Python standard library:
+# - tkinter (GUI)
+# - json (serialization)
+# - dataclasses (data modeling)
+# - typing (type hints)
+# - pathlib (file handling)
+# - threading (concurrency)
+# - queue (event scheduling)
+# - uuid (unique IDs)
+# - datetime (timestamps)
+# - enum (enumerations)
+# - abc (abstract base classes)
+
+# Optional dependencies for development/testing:
+pytest>=7.0.0  # Testing framework
+pytest-cov>=4.0.0  # Coverage reporting
+black>=23.0.0  # Code formatting
+mypy>=1.0.0  # Type checking
+
