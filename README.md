@@ -1,6 +1,6 @@
-# IAGO Python - Negotiation Platform
+# NegoPlatform - Negotiation Platform
 
-A Python implementation of the IAGO (Interactive Arbitration Guide Online) negotiation platform for human-agent negotiation research.
+A Python implementation of NegoPlatform, inspired by IAGO's (Interactive Arbitration Guide Online) negotiation platform for human-agent negotiation research.
 
 ## Features
 
