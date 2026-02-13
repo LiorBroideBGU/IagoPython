@@ -2,6 +2,9 @@
 
 A Python implementation of NegoPlatform, inspired by IAGO's (Interactive Arbitration Guide Online) negotiation platform for human-agent negotiation research.
 
+[Demo Link]([https://example.com](https://drive.google.com/file/d/1_ehidpGIKrt3PU9zoV9x_blzA1jvYo8o/view?usp=sharing))
+
+
 ## Features
 
 - **Event-Driven Architecture**: Mirrors IAGO's multi-channel event system (messages, offers, expressions, timing)
