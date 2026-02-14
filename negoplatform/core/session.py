@@ -228,9 +228,9 @@ class NegotiationSession:
     
     def _handle_formal_accept(self, event: Event) -> None:
         """Handle FORMAL_ACCEPT event."""
-        # Only valid if offer is complete
-        if not self._current_offer.is_complete():
-            print("Cannot formally accept incomplete offer")
+        # Only valid if all game issues have allocations (can be partial)
+        if not self.can_formally_accept():
+            print("Cannot formally accept: some issues have no allocation")
             return
         
         if event.sender_id == HUMAN_ID:
@@ -306,8 +306,23 @@ class NegotiationSession:
         return (human_pct, agent_pct)
     
     def can_formally_accept(self) -> bool:
-        """Check if formal accept is currently valid."""
-        return self.is_active and self._current_offer.is_complete()
+        """Check if formal accept is currently valid.
+        
+        Requires:
+        - Session is active
+        - All game issues have allocations in the current offer
+          (allocations can be partial - items in middle are allowed)
+        """
+        if not self.is_active:
+            return False
+        
+        # Check that all game issues have allocations (can be partial)
+        for issue in self.game.issues:
+            alloc = self._current_offer[issue.name]
+            if alloc is None:
+                return False
+        
+        return True
     
     def get_summary(self) -> dict:
         """Get summary of session state for logging/display."""
