@@ -27,7 +27,7 @@ from .logging.logger import EventLogger
 
 def main():
     parser = argparse.ArgumentParser(
-        description="IAGO Negotiation Platform - Human-Agent Negotiation System"
+        description="NegoPlatform - Human-Agent Negotiation System"
     )
     parser.add_argument(
         "--game",
@@ -169,7 +169,7 @@ def main():
     
     # Run negotiation
     try:
-        app = NegotiationApp(game, agent, title=f"IAGO - {game.name}")
+        app = NegotiationApp(game, agent, title=f"NegoPlatform - {game.name}")
         
         if logger:
             logger.subscribe_to_bus(app._event_bus)
