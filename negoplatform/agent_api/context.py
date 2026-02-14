@@ -149,13 +149,27 @@ class AgentContext:
     # Offer analysis
     
     def is_offer_complete(self, offer: Optional["Offer"] = None) -> bool:
-        """Check if offer has all items allocated."""
+        """Check if offer has all items allocated for all game issues."""
         offer = offer or self.current_offer
-        return offer.is_complete()
+        for issue in self.game.issues:
+            alloc = offer[issue.name]
+            if alloc is None:
+                return False
+            if not alloc.is_complete():
+                return False
+        return True
     
     def can_formally_accept(self) -> bool:
-        """Check if formal accept is currently valid."""
-        return self.current_offer.is_complete()
+        """Check if formal accept is currently valid.
+        
+        Requires all game issues to have allocations (can be partial - 
+        items in middle are allowed and won't contribute to either party's score).
+        """
+        for issue in self.game.issues:
+            alloc = self.current_offer[issue.name]
+            if alloc is None:
+                return False
+        return True
     
     def is_offer_acceptable(
         self, 
