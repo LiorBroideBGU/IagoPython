@@ -42,7 +42,7 @@ class NegotiationApp:
         self,
         game: GameSpec,
         agent: NegotiationAgent,
-        title: str = "IAGO Negotiation Platform",
+        title: str = "NegoPlatform",
     ):
         self.game = game
         self.agent = agent
@@ -336,9 +336,29 @@ class NegotiationApp:
         if not self._session.can_formally_accept():
             messagebox.showwarning(
                 "Cannot Accept",
-                "Please ensure all items are allocated before accepting."
+                "Please ensure all issues have allocations before accepting."
             )
             return
+        
+        # Warn if accepting a partial offer (items still in middle)
+        current_offer = self._session.current_offer
+        if current_offer.is_partial():
+            undecided_items = []
+            for issue in self.game.issues:
+                alloc = current_offer[issue.name]
+                if alloc and alloc.middle > 0:
+                    undecided_items.append(f"{issue.name}: {alloc.middle} undecided")
+            
+            if undecided_items:
+                confirm = messagebox.askyesno(
+                    "Accept Partial Offer?",
+                    f"Some items are still undecided:\n\n" +
+                    "\n".join(undecided_items) +
+                    "\n\nUndecided items won't count toward either party's score.\n\n"
+                    "Accept anyway?"
+                )
+                if not confirm:
+                    return
         
         event = Event.formal_accept(sender_id=HUMAN_ID)
         self._chat_panel.add_message("system", "You formally accepted the deal.")
@@ -420,7 +440,7 @@ class NegotiationApp:
 def run_negotiation(
     game: GameSpec,
     agent: NegotiationAgent,
-    title: str = "IAGO Negotiation Platform",
+    title: str = "NegoPlatform",
 ):
     """
     Convenience function to run a negotiation.
