@@ -2,7 +2,7 @@
 
 A Python implementation of NegoPlatform, inspired by IAGO's (Interactive Arbitration Guide Online) negotiation platform for human-agent negotiation research.
 
-[Demo Link](https://drive.google.com/file/d/1_ehidpGIKrt3PU9zoV9x_blzA1jvYo8o/view?usp=sharing)
+[Demo Link](https://drive.google.com/file/d/1uoJ5ERXIEfg3PyUyfFhx-UgM9Qqku_wB/view)
 
 
 ## Features
